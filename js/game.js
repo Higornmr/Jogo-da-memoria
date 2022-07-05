@@ -1,16 +1,17 @@
 const grid = document.querySelector('.grid');
-
+const spanPlayer = document.querySelector('.player');
+const timer = document.querySelector('.timer');
 const characters = [
-    'beth',
-    'jerry',
-    'jessica',
-    'morty',
-    'pessoa-passaro',
-    'pickle-rick',
-    'rick',
-    'summer',
-    'meeseeks',
-    'scroopy',
+    'eevee',
+    'gyarados',
+    'mew',
+    'mewtwo',
+    'pikachu',
+    'porygon',
+    'scyther',
+    'snorlax',
+    'tyranitar',
+    'articuno',
 ];
 
 const createElement = (tag, className) => {
@@ -26,7 +27,8 @@ const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disable-card');
 
     if (disabledCards.length === 20){
-        alert('Parabéns, você conseguiu !');
+        clearInterval(this.loop);
+        alert(`Prabéns, ${spanPlayer.innerHTML}! Seu tempo foi: ${timer.innerHTML}`);
     }
 }
 
@@ -35,7 +37,6 @@ const checkCards = () => {
     const secondCharacter = secondCard.getAttribute('data-character');
 
     if (firstCharacter === secondCharacter) {
-
         firstCard.firstChild.classList.add('disable-card');
         secondCard.firstChild.classList.add('disable-card');
 
@@ -47,7 +48,6 @@ const checkCards = () => {
     } else {
 
         setTimeout(() => {
-
             firstCard.classList.remove('reveal-card');
             secondCard.classList.remove('reveal-card');
 
@@ -60,7 +60,6 @@ const checkCards = () => {
 }
 
 const revealCard = ({ target }) => {
-
 
     if (target.parentNode.className.includes('reveal-card')) {
         return;
@@ -76,8 +75,6 @@ const revealCard = ({ target }) => {
 
         checkCards();
     }
-
-
 }
 
 const createCard = (character) => {
@@ -103,7 +100,6 @@ const loadGame = () => {
 
     const shufflerdArray = duplicateCharacters.sort(() => Math.random() - 0.5);
 
-
     shufflerdArray.forEach((character) => {
 
         const card = createCard(character);
@@ -112,5 +108,19 @@ const loadGame = () => {
 
 }
 
-loadGame();
+const startTime = () => {
+  this.loop = setInterval(() => {
+        const currentTime = +timer.innerHTML;
+        timer.innerHTML = currentTime + 1;
+    }, 1000);
+}
+
+window.onload = () => {
+    spanPlayer.innerHTML = localStorage.getItem('player');
+    startTime();
+    loadGame();
+}
+
+console.log(this);
+
 

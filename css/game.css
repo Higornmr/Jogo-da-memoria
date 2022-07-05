@@ -1,10 +1,34 @@
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-image: url('../images/paisagem.png');
+    background-size: cover;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px 50px;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    margin: 0 0 30px;
+    border-radius: 5px;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 15px;
     width: 100%;
     max-width: 800px;
-    margin: 100px auto;
+    margin: 0 auto;
 }
 
 .card {
@@ -14,16 +38,17 @@
     position: relative;
     transition: all 400ms ease;
     transform-style: preserve-3d;
+    
 }
 
 .face {
-    width: 100%;
-    height: 100%;
+    width: 105%;
+    height: 80%;
     position: absolute;
     background-size: cover;
     background-position: center;
     border: 2px solid #39813a;
-    border-radius: 5px;
+    border-radius: 50%;
     transition: all 400ms ease;
 }
 
@@ -32,7 +57,7 @@
 }
 
 .back {
-    background-image: url('../images/back.png');
+    background-image: url('../images/pokebola.jfif');
     backface-visibility: hidden;
 }
 
